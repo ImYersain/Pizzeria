@@ -1,0 +1,2 @@
+.root{display:block;text-align:center;height:50px}.root li{display:inline-block}.root li a{display:inline-block;text-align:center;line-height:10px;width:30px;height:30px;padding:10px;border:2px solid #fe5f1e;border-radius:100%;font-size:14px;cursor:pointer;-webkit-transition:all 0.15s ease-in-out;transition:all 0.15s ease-in-out;margin-left:5px;color:#fe5f1e}.root li a:hover{background-color:#fe5f1e;width:40px;height:40px;color:#fff;line-height:20px}.root :global .selected a{background-color:#fe5f1e;color:#fff}
+/*# sourceMappingURL=Pagination.module.min.css.map */
