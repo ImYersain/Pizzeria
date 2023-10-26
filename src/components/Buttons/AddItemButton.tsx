@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { IFetchPizzas } from "../../types/index";
+import { useTranslation } from "react-i18next";
 
 interface AddItemButtonProps {
   onClick: () => void;
@@ -12,9 +12,15 @@ export const AddItemButton: FC<AddItemButtonProps> = ({
   count,
   price,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="pizza-block__bottom">
-      {price && <div className="pizza-block__price">от {price} ₽</div>}
+      {price && (
+        <div className="pizza-block__price">
+          {t("pizzas.price.from")} {price} czk
+        </div>
+      )}
       <div className="button button--outline button--add" onClick={onClick}>
         <svg
           width="12"
@@ -28,7 +34,7 @@ export const AddItemButton: FC<AddItemButtonProps> = ({
             fill="white"
           />
         </svg>
-        <span>Добавить</span>
+        <span>{t("buttons.add.label")}</span>
         {count > 0 && <i>{count}</i>}
       </div>
     </div>

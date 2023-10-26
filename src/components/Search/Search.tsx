@@ -7,8 +7,10 @@ import debounce from "lodash.debounce";
 import styles from "./Search.module.scss";
 import searchIconSvg from "../../assets/img/search.svg";
 import clearIconSvg from "../../assets/img/clear.svg";
+import { useTranslation } from "react-i18next";
 
 export const Search: FC = () => {
+  const { t } = useTranslation();
   const inputRef = useRef<HTMLInputElement>();
   const [localSearchValue, setLocalSearchValue] = useState<string>("");
   const dispatch = useAppDispatch();
@@ -37,7 +39,7 @@ export const Search: FC = () => {
       <input
         ref={inputRef}
         className={styles.search__input}
-        placeholder={"Поиск пиццы"}
+        placeholder={t("search.placeholder")}
         value={localSearchValue}
         onChange={onChangeSearch}
       />

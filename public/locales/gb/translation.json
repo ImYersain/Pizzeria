@@ -1,0 +1,80 @@
+{
+    "header": {
+        "logo.label": "the most delicious pizza in the universe"
+    },
+
+    "search": {
+        "placeholder": "Searching for pizza"
+    },
+
+    "category": {
+        "name.all": "All",
+        "name.meat": "Meat",
+        "name.vegetarian": "Vegetarian",
+        "name.grill": "Grill",
+        "name.spicy": "Spicy",
+        "name.closed": "Closed"
+    },
+
+    "sort": {
+        "label": "Sort by:",
+
+        "raiting": "Raiting",
+        "title": "Title",
+        "price": "Price",
+
+        "ASC": "Asc",
+        "DESC": "Desc"
+    },
+
+    "home": {
+        "menu": "All pizzas",
+        "fetchingError": "Something went wrong ..."
+    },
+
+    "pizzas": {
+        "pizza0": "Pepperoni with peppers",
+        "pizza1": "Cheese",
+        "pizza2": "Barbecue chicken",
+        "pizza3": "Sweet and sour chicken",
+        "pizza4": "Cheeseburger pizza",
+        "pizza5": "Crazy pepperoni",
+        "pizza6": "Pepperoni",
+        "pizza7": "Margarita",
+        "pizza8": "Four Seasons",
+        "pizza9": "Vegetables and mushrooms",
+
+        "price.from": "from"
+    },
+
+    "dough": {
+        "thin": "Thin dough",
+        "traditional": "Traditional dough"
+    },
+
+    "buttons": {
+        "add.label": "Add to cart",
+        "back.label": "Back"
+    },
+
+    "notFound": {
+        "header": "Nothing found",
+        "description": "Unfortunately this page is not available in our online shop"
+    },
+
+    "cart": {
+        "header": "Cart",
+        "clearCart": "Clear the cart",
+        "countItems": "Total pizzas:",
+        "amount": "Order amount:",
+        "back": "Go back",
+        "pay": "Pay now",
+        "psc": "psc.",
+
+        "empty.header": "Cart is empty",
+        "empty.description": "You probably haven't ordered a pizza yet.",
+        "empty.description2": "To order a pizza, go to the home page."
+    },
+
+    "loading": "loading..."
+}

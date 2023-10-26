@@ -40,3 +40,23 @@
     }
   }
 }
+
+.localesWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  width: 120px;
+  padding: 5px;
+  float: right;
+  transform: rotate(0deg);
+
+  &__flag {
+    cursor: pointer;
+    width: 30px;
+
+    &:hover {
+      width: 32px;
+      border: 1px solid gray;
+    }
+  }
+}

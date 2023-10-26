@@ -1,7 +1,7 @@
 export enum NameOfSort {
-  POPULAR = "Популярности",
-  PRICE = "Цене",
-  ALPHABET = "Алфавиту",
+  POPULAR = "Popular",
+  PRICE = "Price",
+  ALPHABET = "Alphabet",
 }
 
 export interface ISort {

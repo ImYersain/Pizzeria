@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useTranslation } from "react-i18next";
 import {
   addItem,
   minusCountItem,
@@ -17,6 +18,7 @@ export const CartPizzaItem: FC<IPizza> = ({
   count,
   price,
 }) => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const onClickPlus = () => {
@@ -40,8 +42,8 @@ export const CartPizzaItem: FC<IPizza> = ({
         <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
       </div>
       <div className="cart__item-info">
-        <h3>{title}</h3>
-        <p>{`${type} , ${size} см`}</p>
+        <h3>{t(`pizzas.pizza${id}`)}</h3>
+        <p>{`${type} , ${size} cm`}</p>
       </div>
       <div className="cart__item-count">
         <div
@@ -89,7 +91,7 @@ export const CartPizzaItem: FC<IPizza> = ({
         </div>
       </div>
       <div className="cart__item-price">
-        <b>{price} ₽</b>
+        <b>{price} czk</b>
       </div>
       <div
         onClick={() => dispatch(removeItem({ id, price }))}

@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TCategoryInitialState } from "./category.types";
 
 const initialState: TCategoryInitialState = {
-  categories: ["All", "Meat", "Vegetarian", "Grill", "Spicy", "Closed"],
+  categories: ["all", "meat", "vegetarian", "grill", "spicy", "closed"],
   activeCategoryId: 0,
   currentPage: "1",
 };

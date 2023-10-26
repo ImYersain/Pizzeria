@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "../../redux/store";
 import { addItem } from "../../redux/slices/cartSlice";
 
@@ -14,7 +15,8 @@ export const PizzaItem: FC<IFetchPizzas> = ({
   sizes,
   types,
 }) => {
-  const typeNames: string[] = ["Тонкое", "Традиционное"];
+  const { t } = useTranslation();
+  const typeNames: string[] = [t("dough.thin"), t("dough.traditional")];
   const [activeType, setActiveType] = useState<number>(0);
   const [activeSize, setActiveSize] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
@@ -44,7 +46,7 @@ export const PizzaItem: FC<IFetchPizzas> = ({
     <div className="pizza-block">
       <div onClick={() => onClickPizzaItem(id)}>
         <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-        <h4 className="pizza-block__title">{title}</h4>
+        <h4 className="pizza-block__title">{t(`pizzas.pizza${id}`)}</h4>
       </div>
       <div className="pizza-block__selector">
         <ul>
@@ -65,7 +67,7 @@ export const PizzaItem: FC<IFetchPizzas> = ({
               className={activeSize === index ? "active" : ""}
               onClick={() => setActiveSize(index)}
             >
-              {size} см.
+              {size} cm.
             </li>
           ))}
         </ul>
