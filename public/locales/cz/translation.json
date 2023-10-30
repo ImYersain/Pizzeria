@@ -1,3 +1,80 @@
 {
-    "hello": "Ahoj!"
+    "header": {
+        "logo.label": "nejchutnější pizza ve vesmíru"
+    },
+
+    "search": {
+        "placeholder": "Hledání pizzy"
+    },
+
+    "category": {
+        "name.all": "Všechny",
+        "name.meat": "Masové",
+        "name.vegetarian": "Vegetariánské",
+        "name.grill": "Grill",
+        "name.spicy": "Pikantní",
+        "name.closed": "Uzavřené"
+    },
+
+    "sort": {
+        "label": "Seřadit podle:",
+
+        "raiting": "Raitingu",
+        "title": "Názvu",
+        "price": "Cene",
+
+        "ASC": "Vzestupně",
+        "DESC": "Sestupně"
+    },
+
+    "home": {
+        "menu": "Všechny pizzy",
+        "fetchingError": "Něco se pokazilo ..."
+    },
+
+    "pizzas": {
+        "pizza0": "Pepperoni s paprikou",
+        "pizza1": "Sýr",
+        "pizza2": "Kuře na grilu",
+        "pizza3": "Sladkokyselé kuře",
+        "pizza4": "Cheeseburger pizza",
+        "pizza5": "Crazy feferonky",
+        "pizza6": "Pepperoni",
+        "pizza7": "Margarita",
+        "pizza8": "Four Seasons",
+        "pizza9": "Zelenina a žampiony",
+
+        "price.from": "Od"
+    },
+
+    "dough": {
+        "thin": "Tenké těsto",
+        "traditional": "Tradiční těsto"
+    },
+
+    "buttons": {
+        "add.label": "Přidat do košíku",
+        "back.label": "Zpět"
+    },
+
+    "notFound": {
+        "header": "Nic nebylo nalezeno",
+        "description": "Tato stránka bohužel není k dispozici v našem internetovém obchodě"
+    },
+
+    "cart": {
+        "header": "Košík",
+        "clearCart": "Vyčistit košík",
+        "countItems": "Celkem pizz:",
+        "amount": "Částka objednávky:",
+        "back": "Vrátit se zpět",
+        "pay": "Zaplaťte nyní",
+        "psc": "ks.",
+
+        "empty.header": "Košík je prázdný",
+        "empty.description": "Pravděpodobně jste si ještě neobjednali pizzu.",
+        "empty.description2": "Chcete-li si objednat pizzu, přejděte na domovskou stránku."
+    },
+
+    "loading": "Načítání..."
 }
