@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
+import "./utils/i18n";
 
 import { NotFound } from "./pages/NotFound";
 import { store } from "./redux/store";

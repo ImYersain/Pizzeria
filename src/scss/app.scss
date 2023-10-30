@@ -342,21 +342,21 @@ body {
         align-items: center;
         justify-content: center;
         width: 210px;
-
+        background-color: darken($color: $gray-line, $amount: 90);
         border-color: darken($color: $gray-line, $amount: 10);
 
         span {
-          color: darken($color: $gray-line, $amount: 20);
+          color: $gray-line;
           font-weight: 500;
           font-weight: 600;
         }
 
         &:hover {
-          background-color: darken($color: $gray-line, $amount: 90);
+          background-color: $black;
           border-color: darken($color: $gray-line, $amount: 90);
 
           span {
-            color: $gray-line;
+            color: darken($color: $gray-line, $amount: 20);
           }
         }
 

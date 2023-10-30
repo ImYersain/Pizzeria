@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../redux/store";
+import { useTranslation } from "react-i18next";
 
 import { CartPizzaItem, EmptyCart } from "../components";
 
@@ -9,6 +10,7 @@ import { clearAllItems } from "../redux/slices/cartSlice";
 import { getCartSelector } from "../redux/selectors/cartSelector";
 
 const Cart: FC = (): JSX.Element => {
+  const { t } = useTranslation();
   const { items, totalPrice } = useSelector(getCartSelector);
   const dispatch = useAppDispatch();
   const totalCount = items.reduce((sum: number, item) => sum + item.count, 0);
@@ -52,7 +54,7 @@ const Cart: FC = (): JSX.Element => {
                   strokeLinejoin="round"
                 />
               </svg>
-              Корзина
+              {t("cart.header")}
             </h2>
             {items.length > 0 && (
               <div
@@ -96,7 +98,7 @@ const Cart: FC = (): JSX.Element => {
                   />
                 </svg>
 
-                <span>Очистить корзину</span>
+                <span>{t("cart.clearCart")}</span>
               </div>
             )}
           </div>
@@ -109,11 +111,14 @@ const Cart: FC = (): JSX.Element => {
             <div className="cart__bottom-details">
               <span>
                 {" "}
-                Всего пицц: <b>{totalCount} шт.</b>{" "}
+                {t("cart.countItems")}{" "}
+                <b>
+                  {totalCount} {t("cart.psc")}
+                </b>{" "}
               </span>
               <span>
                 {" "}
-                Сумма заказа: <b>{totalPrice} ₽</b>{" "}
+                {t("cart.amount")} <b>{totalPrice} czk</b>{" "}
               </span>
             </div>
             <div className="cart__bottom-buttons">
@@ -137,10 +142,10 @@ const Cart: FC = (): JSX.Element => {
                   />
                 </svg>
 
-                <span>Вернуться назад</span>
+                <span>{t("cart.back")}</span>
               </Link>
               <div className="button pay-btn">
-                <span>Оплатить сейчас</span>
+                <span>{t("cart.pay")}</span>
               </div>
             </div>
           </div>

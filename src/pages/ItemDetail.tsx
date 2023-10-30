@@ -3,12 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../redux/store";
 import { addItem } from "../redux/slices/cartSlice";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 import { IFetchPizzas } from "../types/index";
 import { BackButton, AddItemButton } from "../components";
 
 const ItemDetail: FC = (): JSX.Element => {
-  const typeNames = ["Тонкое", "Традиционное"];
+  const { t } = useTranslation();
+  const typeNames: string[] = [t("dough.thin"), t("dough.traditional")];
   const [pizzaItem, setPizzaItem] = useState<IFetchPizzas>();
   const [activeType, setActiveType] = useState<number>(0);
   const [activeSize, setActiveSize] = useState<number>(0);
@@ -25,7 +27,7 @@ const ItemDetail: FC = (): JSX.Element => {
       setPizzaItem(res.data);
     } catch (error) {
       console.log(error);
-      navigate("/404");
+      navigate("/");
     }
   };
 
@@ -51,13 +53,15 @@ const ItemDetail: FC = (): JSX.Element => {
     <div className="container">
       {pizzaItem ? (
         <div style={{ margin: "0 auto", textAlign: "center" }}>
-          <h1>{pizzaItem.title}</h1>
+          <h1>{t(`pizzas.pizza${id}`)}</h1>
           <img
             className="pizza-block__image"
             src={pizzaItem.imageUrl}
             alt="Pizza"
           />
-          <div className="pizza-block__price">от {pizzaItem.price} ₽</div>
+          <div className="pizza-block__price">
+            {t("pizzas.price.from")} {pizzaItem.price} czk
+          </div>
           <div className="pizza-block__selector">
             <ul>
               {pizzaItem.types.map((typeIndex) => (
@@ -77,7 +81,7 @@ const ItemDetail: FC = (): JSX.Element => {
                   className={activeSize === index ? "active" : ""}
                   onClick={() => setActiveSize(index)}
                 >
-                  {size} см.
+                  {size} cm.
                 </li>
               ))}
             </ul>

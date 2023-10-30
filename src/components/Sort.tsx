@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, FC, memo } from "react";
 import { useAppDispatch } from "../redux/store";
+import { useTranslation } from "react-i18next";
 import { changeOrderType, changeSortType } from "../redux/slices/filterSlice";
 
 import { ISort } from "../redux/slices/filterSlice/filter.types";
@@ -10,6 +11,7 @@ interface SortProps {
   isOrderASC: boolean;
 }
 export const Sort: FC<SortProps> = memo(({ sorts, sort, isOrderASC }) => {
+  const { t, i18n } = useTranslation();
   const [openModal, setOpenModal] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const sortRef = useRef();
@@ -45,8 +47,10 @@ export const Sort: FC<SortProps> = memo(({ sorts, sort, isOrderASC }) => {
             fill="#2C2C2C"
           />
         </svg>
-        <b>Сортировка по:</b>
-        <span onClick={() => setOpenModal(!openModal)}>{sort.name}</span>
+        <b>{t("sort.label")}</b>
+        <span onClick={() => setOpenModal(!openModal)}>
+          {t(`sort.${sort.sortProperty}`)}
+        </span>
       </div>
       {openModal && (
         <div className="sort__popup">
@@ -59,7 +63,7 @@ export const Sort: FC<SortProps> = memo(({ sorts, sort, isOrderASC }) => {
                   obj.sortProperty === sort.sortProperty ? "active" : ""
                 }
               >
-                {obj.name}
+                {t(`sort.${obj.sortProperty}`)}
               </li>
             ))}
           </ul>
@@ -78,7 +82,7 @@ export const Sort: FC<SortProps> = memo(({ sorts, sort, isOrderASC }) => {
         }}
         onClick={() => dispatch(changeOrderType())}
       >
-        {isOrderASC ? "По возрастанию" : "По убыванию"}
+        {isOrderASC ? t("sort.DESC") : t("sort.ASC")}
       </div>
     </div>
   );

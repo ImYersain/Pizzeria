@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../redux/store";
+import { useTranslation } from "react-i18next";
 
 import {
   PizzaItem,
@@ -16,6 +17,7 @@ import { getCategorySelector } from "../redux/selectors/categorySelector";
 
 export const Home: FC = (): JSX.Element => {
   // const [searchValue] = useOutletContext();   <-- if we use context
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const { items, status } = useSelector(
@@ -52,16 +54,17 @@ export const Home: FC = (): JSX.Element => {
         <Categories />
         <Sort sorts={sorts} sort={sort} isOrderASC={isOrderASC} />
       </div>
-      <h2 className="content__title">Все пиццы</h2>
+      <h2 className="content__title">{t("home.menu")}</h2>
       <div className="content__items">
         {status === "error" ? (
-          <h2 style={{ marginBottom: "100px" }}>😕 Something went wrong ...</h2>
+          <h2 style={{ marginBottom: "100px" }}>
+            😕 {t("home.fetchingError")}
+          </h2>
         ) : (
           <>{status === "loading" ? skeleton : pizzas}</>
         )}
-        {/* {pizzas.length > 3 && <Pagination currentPage={currentPage} />} */}
-        <Pagination currentPage={currentPage} />
       </div>
+      <Pagination currentPage={currentPage} />
     </>
   );
 };

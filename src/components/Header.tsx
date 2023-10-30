@@ -1,6 +1,8 @@
 import { FC, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Flag from "react-world-flags";
+import { useTranslation } from "react-i18next";
 
 import logoSvg from "../assets/img/pizza-logo.svg";
 import { getCartSelector } from "../redux/selectors/cartSelector";
@@ -8,6 +10,12 @@ import { getCartSelector } from "../redux/selectors/cartSelector";
 import { Search } from "./Search/Search";
 
 export const Header: FC = () => {
+  const { t, i18n } = useTranslation();
+  const locales = {
+    gb: { title: "English" },
+    ru: { title: "Russian" },
+    cz: { title: "Czech" },
+  };
   const { items, totalPrice } = useSelector(getCartSelector);
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
   const isMounted = useRef(false);
@@ -21,6 +29,17 @@ export const Header: FC = () => {
 
   return (
     <>
+      <div className="localesWrapper">
+        {Object.keys(locales).map((locale) => (
+          <li
+            className="localesWrapper__flag"
+            onClick={() => i18n.changeLanguage(locale)}
+            key={locale}
+          >
+            <Flag code={locale} width="100%" />
+          </li>
+        ))}
+      </div>
       <div className="header">
         <div className="container">
           <Link to="/">
@@ -28,7 +47,7 @@ export const Header: FC = () => {
               <img width="38" src={logoSvg} alt="Pizza logo" />
               <div>
                 <h1>React Pizza</h1>
-                <p>самая вкусная пицца во вселенной</p>
+                <p>{t("header.logo.label")}</p>
               </div>
             </div>
           </Link>
