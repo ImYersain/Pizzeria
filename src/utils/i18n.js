@@ -4,11 +4,27 @@ import {
 } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import Backend from "i18next-http-backend";
+import translationGB from '../../public/locales/gb/translation.json';
+import translationRU from '../../public/locales/ru/translation.json';
+import translationCZ from '../../public/locales/cz/translation.json';
+
+const resources = {
+  gb: {
+    translation: translationGB
+  },
+  ru: {
+    translation: translationRU
+  },
+  cz: {
+    translation: translationCZ
+  },
+};
 
 i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
+  resources,
   debug: true,
   fallbackLang: "gb",
 });
 
-i18n.changeLanguage('ru');
+i18n.changeLanguage('gb');
 export default i18n;
