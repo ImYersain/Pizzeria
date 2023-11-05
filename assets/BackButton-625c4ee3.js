@@ -1,1 +1,0 @@
-import{u as n,j as t,L as a}from"./index-e152da29.js";const r=()=>{const{t:s}=n();return t.jsx(a,{to:"/",className:"button button--black",children:t.jsx("span",{children:s("buttons.back.label")})})};export{r as B};
