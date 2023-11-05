@@ -1,53 +1,31 @@
-import React, { FC, useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../redux/store";
-import { addItem } from "../redux/slices/cartSlice";
-import axios from "axios";
+import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 
-import { IFetchPizzas } from "../types/index";
-import { BackButton, AddItemButton } from "../components";
+import { IFetchPizzas } from "../../types/index";
+import { BackButton, AddItemButton } from "../../components";
 
-const ItemDetail: FC = (): JSX.Element => {
+interface IItemDetail {
+  id: string;
+  pizzaItem: IFetchPizzas;
+  activeType: number;
+  setActiveType: React.Dispatch<React.SetStateAction<number>>;
+  typeNames: string[];
+  activeSize: number;
+  setActiveSize: React.Dispatch<React.SetStateAction<number>>;
+  onClickAddItem: (pizzaItem: IFetchPizzas) => void;
+}
+
+export const ItemDetail: FC<IItemDetail> = ({
+  id,
+  pizzaItem,
+  activeType,
+  setActiveType,
+  typeNames,
+  activeSize,
+  setActiveSize,
+  onClickAddItem,
+}): JSX.Element => {
   const { t } = useTranslation();
-  const typeNames: string[] = [t("dough.thin"), t("dough.traditional")];
-  const [pizzaItem, setPizzaItem] = useState<IFetchPizzas>();
-  const [activeType, setActiveType] = useState<number>(0);
-  const [activeSize, setActiveSize] = useState<number>(0);
-
-  const dispatch = useAppDispatch();
-  const { id } = useParams();
-  const navigate = useNavigate();
-
-  const fetchItemById = async () => {
-    try {
-      const res = await axios.get(
-        `https://64f4f88e932537f4051ad1ac.mockapi.io/items/${id}`
-      );
-      setPizzaItem(res.data);
-    } catch (error) {
-      console.log(error);
-      navigate("/");
-    }
-  };
-
-  useEffect(() => {
-    fetchItemById();
-  }, []);
-
-  const onClickAddItem = (pizzaItem: IFetchPizzas) => {
-    const { id, title, price, imageUrl, sizes } = pizzaItem;
-    dispatch(
-      addItem({
-        id,
-        title,
-        price,
-        imageUrl,
-        type: typeNames[activeType],
-        size: sizes[activeSize],
-      })
-    );
-  };
 
   return (
     <div className="container">
@@ -117,5 +95,3 @@ const ItemDetail: FC = (): JSX.Element => {
     </div>
   );
 };
-
-export default ItemDetail;

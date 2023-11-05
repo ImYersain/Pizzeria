@@ -1,23 +1,31 @@
 import React, { FC } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useAppDispatch } from "../redux/store";
 import { useTranslation } from "react-i18next";
 
-import { CartPizzaItem, EmptyCart } from "../components";
+import { CartPizzaItem } from "../../components";
+import { IPizza } from "../../types/index";
 
-import { clearAllItems } from "../redux/slices/cartSlice";
-import { getCartSelector } from "../redux/selectors/cartSelector";
+interface ICartProps {
+  items: IPizza[];
+  totalPrice: number;
+  totalCount: number;
+  onClearCart: () => void;
+}
 
-const Cart: FC = (): JSX.Element => {
+export const Cart: FC<ICartProps> = ({
+  items,
+  totalPrice,
+  totalCount,
+  onClearCart,
+}): JSX.Element => {
   const { t } = useTranslation();
-  const { items, totalPrice } = useSelector(getCartSelector);
-  const dispatch = useAppDispatch();
-  const totalCount = items.reduce((sum: number, item) => sum + item.count, 0);
+  // const { items, totalPrice } = useSelector(getCartSelector);
+  // const dispatch = useAppDispatch();
+  // const totalCount = items.reduce((sum: number, item) => sum + item.count, 0);
 
-  if (!items.length) {
-    return <EmptyCart />;
-  }
+  // if (!items.length) {
+  //   return <EmptyCart />;
+  // }
 
   return (
     <>
@@ -57,10 +65,7 @@ const Cart: FC = (): JSX.Element => {
               {t("cart.header")}
             </h2>
             {items.length > 0 && (
-              <div
-                onClick={() => dispatch(clearAllItems())}
-                className="cart__clear"
-              >
+              <div onClick={onClearCart} className="cart__clear">
                 <svg
                   width="20"
                   height="20"
@@ -154,5 +159,3 @@ const Cart: FC = (): JSX.Element => {
     </>
   );
 };
-
-export default Cart;

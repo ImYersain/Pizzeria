@@ -6,11 +6,15 @@ import "./utils/i18n";
 
 import { NotFound } from "./pages/NotFound";
 import { store } from "./redux/store";
-import { Home } from "./pages/Home";
+import HomeContainer from "./pages/HomePage/HomeContainer";
 import App from "./App";
 
-const Cart = React.lazy(() => import("./pages/Cart"));
-const ItemDetail = React.lazy(() => import("./pages/ItemDetail"));
+const CartContainer = React.lazy(
+  () => import("./pages/CartPage/CartContainer")
+);
+const ItemDetailContainer = React.lazy(
+  () => import("./pages/ItemDetailPage/ItemDetailContainer")
+);
 
 const router = createBrowserRouter([
   {
@@ -20,13 +24,13 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <HomeContainer />,
       },
       {
         path: "/cart",
         element: (
           <Suspense fallback={<div>loading...</div>}>
-            <Cart />
+            <CartContainer />
           </Suspense>
         ),
       },
@@ -34,7 +38,7 @@ const router = createBrowserRouter([
         path: "/:id",
         element: (
           <Suspense fallback={<div>loading...</div>}>
-            <ItemDetail />
+            <ItemDetailContainer />
           </Suspense>
         ),
       },
